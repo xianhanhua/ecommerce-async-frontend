@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>电商商品分页查询</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div>
+        <p class="eyebrow">网络编程实践</p>
+        <h1>电商商品异步分页查询</h1>
+        <p>通过独立 request.js 封装请求工具，对接 Mock API，实现商品列表分页查询和分类筛选。</p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="toolbar">
+        <label>
+          商品分类
+          <select id="categorySelect">
+            <option value="all">全部分类</option>
+          </select>
+        </label>
+        <label>
+          商品搜索
+          <input id="keywordInput" type="search" placeholder="输入商品名称，例如：耳机" />
+        </label>
+        <label>
+          每页数量
+          <select id="pageSizeSelect">
+            <option value="4">4 条/页</option>
+            <option value="6">6 条/页</option>
+            <option value="8">8 条/页</option>
+          </select>
+        </label>
+        <button id="searchBtn">查询</button>
+      </section>
+
+      <section class="summary">
+        <span id="querySummary">等待请求数据</span>
+        <span id="loadingText" class="loading hidden">请求中...</span>
+      </section>
+
+      <section id="productList" class="product-list"></section>
+
+      <section class="pagination">
+        <button id="prevBtn">上一页</button>
+        <span id="pageInfo">第 1 页</span>
+        <button id="nextBtn">下一页</button>
+      </section>
+
+      <section class="request-panel">
+        <div class="panel-head">
+          <h2>接口请求日志</h2>
+          <button id="clearLogBtn">清空日志</button>
+        </div>
+        <p>每次分页、分类筛选或搜索都会调用 Mock API，并在这里记录一次请求，截图这里即可证明“访问一页发送一次请求”。</p>
+        <pre id="requestLog"></pre>
+      </section>
+    </main>
+
+    <script src="./js/mock-data.js"></script>
+    <script src="./js/mock-api.js"></script>
+    <script src="./js/request.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
